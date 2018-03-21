@@ -1,3 +1,9 @@
 .bg-black {
     background: #000000;
 }
+input[type="text"], textarea {
+
+    background-color : #000000;
+    color : #ffffff;
+
+}
