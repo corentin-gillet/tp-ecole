@@ -3,13 +3,14 @@ $(document).ready(function () {
     $('#terminal').keypress(function (e) {
         if (e.which === 13) {
             $.ajax({
-                url: 'http://tp-ecole.local/src/response.php',
+                url: 'http://localhost/tp-ecole/src/response.php',
                 type: 'GET',
                 DataType: 'Json',
                 data: '',
 
                 success: function (data, statut) {
                     var val = $('input');
+
                     if (val.val() === 'clear')
                     {
                         tpl.html('');
@@ -17,6 +18,18 @@ $(document).ready(function () {
                     else if (val.val() === 'exit')
                     {
                      val.attr("disabled", "disabled")
+                    }
+                    else if (val.val() === 'php')
+                    {
+                        tpl.html(data);
+                    }
+                    else if (val.val() === 'date')
+                    {
+                        tpl.html(data);
+                    }
+                    else if (val.val() === 'disque')
+                    {
+                        tpl.html(data);
                     }
                     tpl.append('<p class="text-center">' + val.val() +'</p>');
                     val.val('');
@@ -32,5 +45,11 @@ $(document).ready(function () {
         }
     })
 });
+
+
+
+
+
+
 
 
