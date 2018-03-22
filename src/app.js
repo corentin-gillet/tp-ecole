@@ -10,6 +10,10 @@ $(document).ready(function () {
 
                 success: function (data, statut) {
                     var val = $('input');
+                    if (val.val() === 'clear')
+                    {
+                        tpl.html('');
+                    }
                     tpl.append('<p class="text-center">' + val.val() +'</p>');
                     val.val('');
 
