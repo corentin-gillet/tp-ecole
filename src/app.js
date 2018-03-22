@@ -2,9 +2,6 @@ $(document).ready(function () {
     const tpl = $('#template');
     $('#terminal').keypress(function (e) {
         if (e.which === 13) {
-
-
-
             $.ajax({
                 url: 'http://tp-ecole.local/src/response.php',
                 type: 'GET',
