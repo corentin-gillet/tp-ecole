@@ -14,6 +14,10 @@ $(document).ready(function () {
                     {
                         tpl.html('');
                     }
+                    else if (val.val() === 'exit')
+                    {
+                     val.attr("disabled", "disabled")
+                    }
                     tpl.append('<p class="text-center">' + val.val() +'</p>');
                     val.val('');
 
