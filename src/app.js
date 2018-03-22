@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    const tpl = $('#template');
     $('#terminal').keypress(function (e) {
         if (e.which === 13) {
 
@@ -8,17 +9,13 @@ $(document).ready(function () {
                 DataType: 'Json',
 
                 success: function (data, statut) {
-                    alert('good');
-                    alert(data);
-                    alert(statut);
+                    var val = $('input').val();
+                    console.log(val);
+                    tpl.append(val)
                 },
                 error: function (data, statut, erreur) {
-                    alert('error');
-                    alert(data);
-                    alert(statut);
                 },
                 complete: function (data, statut) {
-                    alert('complete');
 
                 }
             });
