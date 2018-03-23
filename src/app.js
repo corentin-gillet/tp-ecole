@@ -9,13 +9,16 @@ $(document).ready(function () {
             var commande = tab[0].toString();
 
             $.ajax({
-                url: '../src/response.php',
+                url: 'http://localhost/tp-ecole/src/response.php',
                 type: 'GET',
                 DataType: 'Json',
                 data: 'commande=' + commande,
 
                 success: function (data, statut) {
-
+                    if (commande === 'man')
+                    {
+                        tpl.html('Commandes disponibles : clear, exit, version, date, free, =, cd ')
+                    }
                     if (commande === 'clear')
                     {
                         tpl.html('');
@@ -63,9 +66,46 @@ $(document).ready(function () {
 
                 }
             });
+
+            $.ajax({
+                url: 'http://localhost/tp-ecole/src/response.php',
+                type: 'POST',
+                DataType: 'html',
+                data: 'commande=' + commande,
+
+                success: function (data, statut) {
+                    if (commande === 'cd')
+                    {   console.log(data);
+                         tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    }
+
+                    $('input').val('');
+
+                },
+                error: function (data, statut, erreur) {
+
+                },
+                complete: function (data, statut) {
+
+                }
+
+            });
+
+
+
         }
     })
 });
+
+
+
+
+
+
+
+
+
+
 
 
 

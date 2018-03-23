@@ -1,7 +1,16 @@
 <?php
 
-  $commande = ($_GET['commande']);
+if(isset($_GET["commande"])) {
+    $commande = $_GET['commande'];
+}
+else {
+    $commande = $_POST['commande'];
+}
 
+ /* $espace = " ";
+  $tabCommande = explode($espace, $get);
+  $commande = $tabCommande[0];
+ */
 
   if ($commande === "date")
   {
@@ -14,6 +23,10 @@
   elseif ($commande === "free")
   {
       include 'version.php';
+  }
+  elseif ($commande === "cd")
+  {
+      include 'cd.php';
   }
   else
   {
