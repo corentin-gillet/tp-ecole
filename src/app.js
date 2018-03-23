@@ -3,17 +3,17 @@
 
 
 $(document).ready(function () {
-
-
     const tpl = $('#template');
     $('#terminal').keypress(function (e) {
+
         if (e.which === 13) {
+
             var input = $('input');
             $.ajax({
                 url: '../src/response.php',
                 type: 'GET',
                 DataType: 'Json',
-                Data: 'commande=' + input.val(),
+                data: 'commande=' + input.val(),
 
                 success: function (data, statut) {
                     alert(data);
