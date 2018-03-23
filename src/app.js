@@ -17,21 +17,23 @@ $(document).ready(function () {
                     {
                      val.attr("disabled", "disabled")
                     }
-                    else if (input.val() === 'php')
+                    else if (input.val() === 'version')
                     {
-                        tpl.html(data);
+                        tpl.append('<p class="text-left mr-5">' + input.val() +' &nbsp;&nbsp;' + data + '</p>');
                     }
                     else if (input.val() === 'date')
                     {
-                        tpl.html(data);
+                        tpl.append('<p class="text-left mr-5">' + input.val() +' &nbsp;&nbsp;' + data + '</p>');
                     }
-                    else if (input.val() === 'disque')
+
+                    else if (input.val() === 'free')
                     {
-                        tpl.html(data);
+                        tpl.append('<p class="text-left mr-5">' + input.val() +' &nbsp;&nbsp;' + data + '</p>');
+
                     }
                     else if (input.val() !== 'clear')
                     {
-                        tpl.append('<p class="text-center">' + input.val() +'</p>');
+                        tpl.append('<p class="text-left mr-5">' + input.val() +' &nbsp;&nbsp;' + data + '</p>');
                     }
                     input.val('');
 
