@@ -44,10 +44,13 @@ $(document).ready(function () {
                     }*/
                     else if (commande === '=')
                     {
-                        var x = tab[1];
-                        var y = tab[2];
-                        var z = tab[3];
-                        console.log(eval('x y z'));
+                        var evale = "";
+                        for (var i = 1; i < tab.length; i++) {
+                            evale += " " + tab[i];
+                        }
+                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + eval(evale) + '</p>');
+
+
 
                     }
                     $('input').val('');
