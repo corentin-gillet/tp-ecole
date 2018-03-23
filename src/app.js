@@ -9,16 +9,13 @@ $(document).ready(function () {
             var commande = tab[0].toString();
 
             $.ajax({
-                url: 'http://localhost/tp-ecole/src/response.php',
+                url: '../src/response.php',
                 type: 'GET',
                 DataType: 'Json',
                 data: 'commande=' + commande,
 
                 success: function (data, statut) {
-                    if (commande === 'man')
-                    {
-                        tpl.html('Commandes disponibles : clear, exit, version, date, free, =, cd ')
-                    }
+
                     if (commande === 'clear')
                     {
                         tpl.html('');
@@ -66,20 +63,33 @@ $(document).ready(function () {
 
                 }
             });
-
             $.ajax({
-                url: 'http://localhost/tp-ecole/src/response.php',
+                url: '../src/response.php',
                 type: 'POST',
-                DataType: 'html',
-                data: 'commande=' + commande,
+                DataType: 'Json',
+                data: 'commande=' + tab,
 
                 success: function (data, statut) {
-                    if (commande === 'cd')
-                    {   console.log(data);
-                         tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    if (commande === "cd")
+                    {
+                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
                     }
+                    else if (commande === "ls")
+                    {
+                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    }
+                    else if (commande === "mkdir")
+                    {
+                        if (data === 'true') {
+                            var text = 'Dossier créer';
+                            tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + text + '</p>');
+                        }
+                        else {
+                            var textError = 'Impossible de créer le dossier car il existe déjà.';
+                            tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + textError + '</p>');
 
-                    $('input').val('');
+                        }
+                    }
 
                 },
                 error: function (data, statut, erreur) {
@@ -88,24 +98,10 @@ $(document).ready(function () {
                 complete: function (data, statut) {
 
                 }
-
             });
-
-
-
         }
     })
 });
-
-
-
-
-
-
-
-
-
-
 
 
 

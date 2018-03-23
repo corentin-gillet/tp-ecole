@@ -1,16 +1,18 @@
 <?php
 
+$_SESSION['path'] = getcwd();
+
 if(isset($_GET["commande"])) {
     $commande = $_GET['commande'];
 }
 else {
-    $commande = $_POST['commande'];
+    $get = $_POST['commande'];
+    $espace = ",";
+    $tabCommande = explode($espace, $get);
+    $commande = $tabCommande[0];
 }
 
- /* $espace = " ";
-  $tabCommande = explode($espace, $get);
-  $commande = $tabCommande[0];
- */
+
 
   if ($commande === "date")
   {
@@ -27,6 +29,14 @@ else {
   elseif ($commande === "cd")
   {
       include 'cd.php';
+  }
+  elseif ($commande === "ls")
+  {
+      include 'ls.php';
+  }
+  elseif ($commande === "mkdir")
+  {
+      include 'mkdir.php';
   }
   else
   {

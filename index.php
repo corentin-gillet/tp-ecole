@@ -1,4 +1,9 @@
+<?php
 
-<?php include 'template/home.html' ?>
+$_SESSION['path'] = getcwd();
+
+include 'template/home.html';
+
+?>
 
 
