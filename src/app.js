@@ -1,12 +1,19 @@
 $(document).ready(function () {
+    var history = [];
     const tpl = $('#template');
     $('#terminal').keypress(function (e) {
         if (e.which === 13) {
+
 
             var inputVal = $('input').val();
             var espace = " ";
             var tab = inputVal.split(espace);
             var commande = tab[0].toString();
+            if (history.length === 50)
+            {
+                history.shift();
+            }
+            history.push(commande);
 
             $.ajax({
                 url: '../src/response.php',
@@ -102,6 +109,19 @@ $(document).ready(function () {
 
                         }
                     }
+                    else if (commande === "vi")
+                    {
+                            tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    }
+                    else if (commande === "history")
+                    {
+                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + history + '</p>');
+                    }
+                    else if (commande === "reset")
+                    {
+                        history = [''];
+                    }
+
 
                 },
                 error: function (data, statut, erreur) {
