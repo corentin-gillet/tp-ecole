@@ -1,10 +1,7 @@
 <?php
 
   $commande = ($_GET['commande']);
- /* $espace = " ";
-  $tabCommande = explode($espace, $get);
-  $commande = $tabCommande[0];
- */
+
 
   if ($commande === "date")
   {
