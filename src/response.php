@@ -15,6 +15,9 @@ echo json_encode($array);*/
   /*  $date = new DateTime();
     echo $date->format('Y-m-d H:i');*/
 
+  echo 'ceci est un dump'.var_dump($_GET['commande=']);
+
+
 
   $free = disk_free_space("C:");
   $total = disk_total_space("C:");

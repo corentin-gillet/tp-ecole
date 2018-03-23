@@ -1,38 +1,45 @@
+
+
+
+
 $(document).ready(function () {
+
+
     const tpl = $('#template');
     $('#terminal').keypress(function (e) {
         if (e.which === 13) {
+            var input = $('input');
             $.ajax({
-                url: 'http://localhost/tp-ecole/src/response.php',
+                url: '../src/response.php',
                 type: 'GET',
                 DataType: 'Json',
-                data: '',
+                Data: 'commande=' + input.val(),
 
                 success: function (data, statut) {
-                    var val = $('input');
+                    alert(data);
 
-                    if (val.val() === 'clear')
+                    if (input.val() === 'clear')
                     {
                         tpl.html('');
                     }
-                    else if (val.val() === 'exit')
+                    else if (input.val() === 'exit')
                     {
                      val.attr("disabled", "disabled")
                     }
-                    else if (val.val() === 'php')
+                    else if (input.val() === 'php')
                     {
                         tpl.html(data);
                     }
-                    else if (val.val() === 'date')
+                    else if (input.val() === 'date')
                     {
                         tpl.html(data);
                     }
-                    else if (val.val() === 'disque')
+                    else if (input.val() === 'disque')
                     {
                         tpl.html(data);
                     }
-                    tpl.append('<p class="text-center">' + val.val() +'</p>');
-                    val.val('');
+                    tpl.append('<p class="text-center">' + input.val() +'</p>');
+                    input.val('');
 
                 },
                 error: function (data, statut, erreur) {
