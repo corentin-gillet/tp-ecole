@@ -22,7 +22,7 @@ $(document).ready(function () {
 
                 success: function (data, statut) {
                     if (commande === 'man') {
-                        tpl.html('Commandes disponibles : clear, exit, version, date, free, =, cd ')
+                        tpl.html('Commandes disponibles : clear, exit, version, date, free, =, cd?; ls, rmdir, mkdir, history, reset ')
                     }
                     if (commande === 'clear') {
                         tpl.html('');
