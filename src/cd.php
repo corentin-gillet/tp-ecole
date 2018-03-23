@@ -1,7 +1,12 @@
 <?php
 
-$cd = getcwd();
+$_SESSION['path'] = getcwd();
 
-echo $cd;
+$path='"c:\wamp64\www\tp-ecole\"';
 
+echo $_SESSION['path'];
+chdir($_POST["path"]);
+echo '<br/>';
+
+echo getcwd();
 ?>

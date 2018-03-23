@@ -16,13 +16,16 @@ $(document).ready(function () {
             history.push(commande);
 
             $.ajax({
-                url: '../src/response.php',
+                url: 'http://localhost/tp-ecole/src/response.php',
                 type: 'GET',
                 DataType: 'Json',
                 data: 'commande=' + commande,
 
                 success: function (data, statut) {
-
+                    if (commande === 'man')
+                    {
+                        tpl.html('Commandes disponibles : clear, exit, version, date, free, =, cd ')
+                    }
                     if (commande === 'clear')
                     {
                         tpl.html('');
@@ -37,7 +40,7 @@ $(document).ready(function () {
                     }
                     else if (commande === 'date')
                     {
-                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                        tpl.append('<p class="text-left mr-5">' +  data + '</p>');
                     }
 
                     else if (commande === 'free')
@@ -70,8 +73,9 @@ $(document).ready(function () {
 
                 }
             });
+
             $.ajax({
-                url: '../src/response.php',
+                url: 'http://localhost/tp-ecole/src/response.php',
                 type: 'POST',
                 DataType: 'Json',
                 data: 'commande=' + tab,
@@ -134,6 +138,16 @@ $(document).ready(function () {
         }
     })
 });
+
+
+
+
+
+
+
+
+
+
 
 
 
