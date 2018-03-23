@@ -17,6 +17,10 @@
   {
       include 'version.php';
   }
+  else
+  {
+      echo 'Oups, cette commande n\'existe pas vous pouvez consulter la liste des commandes avec la commande help';
+  }
 
 
 

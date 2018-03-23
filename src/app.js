@@ -1,23 +1,14 @@
-
-
-
-
 $(document).ready(function () {
     const tpl = $('#template');
     $('#terminal').keypress(function (e) {
-
         if (e.which === 13) {
-
             var input = $('input');
             $.ajax({
                 url: '../src/response.php',
                 type: 'GET',
                 DataType: 'Json',
                 data: 'commande=' + input.val(),
-
                 success: function (data, statut) {
-                    alert(data);
-
                     if (input.val() === 'clear')
                     {
                         tpl.html('');
@@ -38,7 +29,10 @@ $(document).ready(function () {
                     {
                         tpl.html(data);
                     }
-                    tpl.append('<p class="text-center">' + input.val() +'</p>');
+                    else if (input.val() !== 'clear')
+                    {
+                        tpl.append('<p class="text-center">' + input.val() +'</p>');
+                    }
                     input.val('');
 
                 },
