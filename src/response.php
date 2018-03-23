@@ -1,30 +1,28 @@
 <?php
 
-/*$array = ['1' => 'Test1', '2' => 'Test2'];
+  $get = ($_GET['commande']);
+  $espace = " ";
+  $tabCommande = explode($espace, $get);
+  $commande = $tabCommande[0];
 
-echo json_encode($array);*/
+  if ($commande === "date")
+  {
+      include 'date.php';
+  }
+  elseif ($commande === "version")
+  {
+      include 'version.php';
+  }
+  elseif ($commande === "free")
+  {
+      include 'version.php';
+  }
+  else
+  {
+      echo 'Oups, cette commande n\'existe pas vous pouvez consulter la liste des commandes avec la commande help';
+  }
 
-            // VERSION PHP
-/*
-    $version = 'Version PHP courante : ' . phpversion();
-    echo json_encode($version);*/
 
-
-            // DATE ACTUELLE
-
-  /*  $date = new DateTime();
-    echo $date->format('Y-m-d H:i');*/
-
-
-  $free = disk_free_space("C:");
-  $total = disk_total_space("C:");
-
-  $i= 0;
-    while (($free/1024)and($total/1024) >1) {
-     $free=$free/1024;
-     $total = $total/1024;
-     $i++;}
-     echo "Il reste ".$free ." Go / ". $total. " Go d'espace disponible sur le disque";
 
 
 
