@@ -9,59 +9,54 @@ $(document).ready(function () {
             var espace = " ";
             var tab = inputVal.split(espace);
             var commande = tab[0].toString();
-            if (history.length === 50)
-            {
+            if (history.length === 50) {
                 history.shift();
             }
             history.push(commande);
 
             $.ajax({
-                url: 'http://localhost/tp-ecole/src/response.php',
+                url: '../src/response.php',
                 type: 'GET',
                 DataType: 'Json',
                 data: 'commande=' + commande,
 
                 success: function (data, statut) {
-                    if (commande === 'man')
-                    {
+                    if (commande === 'man') {
                         tpl.html('Commandes disponibles : clear, exit, version, date, free, =, cd ')
                     }
-                    if (commande === 'clear')
-                    {
+                    if (commande === 'clear') {
                         tpl.html('');
                     }
-                    else if (commande === 'exit')
-                    {
-                     $('input').attr("disabled", "disabled")
+                    else if (commande === 'exit') {
+                        $('input').attr("disabled", "disabled")
                     }
-                    else if (commande === 'version')
-                    {
-                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    else if (commande === 'version') {
+                        tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + data + '</p>');
                     }
-                    else if (commande === 'date')
-                    {
-                        tpl.append('<p class="text-left mr-5">' +  data + '</p>');
+                    else if (commande === 'date') {
+                        tpl.append('<p class="text-left mr-5">' + data + '</p>');
                     }
 
-                    else if (commande === 'free')
-                    {
-                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    else if (commande === 'free') {
+                        tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + data + '</p>');
 
                     }
                     /*else if (commande !== 'clear')
                     {
                         tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
                     }*/
-                    else if (commande === '=')
-                    {
+                    else if (commande === '=') {
                         var evale = "";
                         for (var i = 1; i < tab.length; i++) {
                             evale += " " + tab[i];
                         }
-                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + eval(evale) + '</p>');
-
-
-
+                        tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + eval(evale) + '</p>');
+                    }
+                    else if (commande === "history") {
+                        tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + history + '</p>');
+                    }
+                    else if (commande === "reset") {
+                        history = [''];
                     }
                     $('input').val('');
 
@@ -75,22 +70,19 @@ $(document).ready(function () {
             });
 
             $.ajax({
-                url: 'http://localhost/tp-ecole/src/response.php',
+                url: '../src/response.php',
                 type: 'POST',
                 DataType: 'Json',
                 data: 'commande=' + tab,
 
                 success: function (data, statut) {
-                    if (commande === "cd")
-                    {
-                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    if (commande === "cd") {
+                        tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + data + '</p>');
                     }
-                    else if (commande === "ls")
-                    {
-                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    else if (commande === "ls") {
+                        tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + data + '</p>');
                     }
-                    else if (commande === "mkdir")
-                    {
+                    else if (commande === "mkdir") {
                         if (data === 'true') {
                             var textMkdir = 'Dossier créer';
                             tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + textMkdir + '</p>');
@@ -101,8 +93,7 @@ $(document).ready(function () {
 
                         }
                     }
-                    else if (commande === "rmdir")
-                    {
+                    else if (commande === "rmdir") {
                         if (data === 'true') {
                             var textRmdir = 'Dossier supprimé';
                             tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + textRmdir + '</p>');
@@ -113,18 +104,10 @@ $(document).ready(function () {
 
                         }
                     }
-                    else if (commande === "vi")
-                    {
-                            tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + data + '</p>');
+                    else if (commande === "vi") {
+                        tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + data + '</p>');
                     }
-                    else if (commande === "history")
-                    {
-                        tpl.append('<p class="text-left mr-5">' + commande +' &nbsp;&nbsp;' + history + '</p>');
-                    }
-                    else if (commande === "reset")
-                    {
-                        history = [''];
-                    }
+
 
 
                 },
