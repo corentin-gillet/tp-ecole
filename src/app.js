@@ -15,7 +15,7 @@ $(document).ready(function () {
                     }
                     else if (input.val() === 'exit')
                     {
-                     val.attr("disabled", "disabled")
+                     input.attr("disabled", "disabled")
                     }
                     else if (input.val() === 'version')
                     {
