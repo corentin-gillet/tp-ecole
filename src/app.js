@@ -81,12 +81,24 @@ $(document).ready(function () {
                     else if (commande === "mkdir")
                     {
                         if (data === 'true') {
-                            var text = 'Dossier créer';
-                            tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + text + '</p>');
+                            var textMkdir = 'Dossier créer';
+                            tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + textMkdir + '</p>');
                         }
                         else {
                             var textError = 'Impossible de créer le dossier car il existe déjà.';
                             tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + textError + '</p>');
+
+                        }
+                    }
+                    else if (commande === "rmdir")
+                    {
+                        if (data === 'true') {
+                            var textRmdir = 'Dossier supprimé';
+                            tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + textRmdir + '</p>');
+                        }
+                        else {
+                            var textErrorRmdir = 'Impossible de supprimer le dossier car il n\'existe pas.';
+                            tpl.append('<p class="text-left mr-5">' + commande + ' &nbsp;&nbsp;' + textErrorRmdir + '</p>');
 
                         }
                     }
